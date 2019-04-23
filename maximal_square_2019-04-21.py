@@ -1,10 +1,5 @@
 class Solution(object):
     # def maximalSquare(self, matrix):
-    #     """
-    #     :type matrix: List[List[str]]
-    #     :rtype: int
-    #     """
-    #     # Brute force O(mn^2)
     #     if matrix is None or len(matrix) == 0:
     #         return 0
     #     rows, cols = len(matrix), len(matrix[0])
@@ -28,8 +23,8 @@ class Solution(object):
     #                     res = sqlen
     #     return res * res
 
+    
     # def maximalSquare(self, matrix):
-    #     # dp[i][j] = min(dp[i-1][j],dp[i-1][j-1],dp[i][j-1])+1
     #     if matrix is None or len(matrix) == 0:
     #         return 0
     #     rows, cols, res = len(matrix), len(matrix[0]), 0
@@ -41,9 +36,8 @@ class Solution(object):
     #                 res = max(res, dp[i][j])
     #     return res * res
 
+    
     def maximalSquare(self, matrix):
-        # dp[j] = min([j], dp[j-1], prev) + 1
-        # O(n) space
         if matrix is None or len(matrix) == 0:
             return 0
         rows, cols, res, prev = len(matrix), len(matrix[0]), 0, 0
