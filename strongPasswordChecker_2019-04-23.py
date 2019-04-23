@@ -21,7 +21,7 @@
                 while p < len(s) and s[p] == s[p-1]:
                     length += 1
                     p += 1
-                    
+                
                 change += length / 3
                 if length % 3 == 0: one += 1
                 elif length % 3 == 1: two += 2
