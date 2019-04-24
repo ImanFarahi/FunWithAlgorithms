@@ -18,7 +18,7 @@
         while p < str_len:
             if s[p] == s[p-1] == s[p-2]: 
                 length = 2
-                while p < len(s) and s[p] == s[p-1]:
+                while p < str_len and s[p] == s[p-1]:
                     length += 1
                     p += 1
                 
