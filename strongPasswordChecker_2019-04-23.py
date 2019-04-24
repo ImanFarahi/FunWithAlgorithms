@@ -1,7 +1,7 @@
 ​class Solution(object):
-    def get_missing_type(self, str):
+    def get_missing_type(self, s):
         lower = upper = digit = 1
-        for ch in str:
+        for ch in s:
             if ch.islower(): lower = 0
             elif ch.isupper(): upper = 0
             elif ch.isdigit(): digit = 0
