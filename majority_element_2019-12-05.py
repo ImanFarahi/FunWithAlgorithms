@@ -9,7 +9,7 @@ class Solution(object):
             c[num] = 1 if num not in c.keys() else c[num]+1
             if c[num] > m:
                 v.append(num)
-                c[num] = - float('inf')
+                c[num] = -sys.maxsize - 1 # -float('inf')
         return v
 
 class Solution(object):
