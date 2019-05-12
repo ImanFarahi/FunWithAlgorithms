@@ -1,38 +1,22 @@
-​class Solution(object):
-    def get_missing_type(self, str):
-        lower = upper = digit = 1
-        for ch in str:
-            if ch.islower(): lower = 0
-            elif ch.isupper(): upper = 0
-            elif ch.isdigit(): digit = 0
-        return (lower + upper + digit)
-    
-    def strongPasswordChecker(self, s):
-
-        str_len= len(s)
-        missing_type = self.get_missing_type(s)
-        if str_len < 6: return max(missing_type, 6 - str_len)
-        
-        change = one= two= 0
-        p = 2 
-        while p < str_len:
-            if s[p] == s[p-1] == s[p-2]: 
-                length = 2
-                while p < len(s) and s[p] == s[p-1]:
-                    length += 1
-                    p += 1
-                    
-                change += length / 3
-                if length % 3 == 0: one += 1
-                elif length % 3 == 1: two += 2
-            else:
-                p += 1
-                
-        if str_len <= 20: return max(missing_type, change)
-        
+​def strongPasswordChecker(s):
+    str_len = len(s); change, triple, seq, i, length, delete, types = 0,0,0,0,1, str_len -20, [1] * 4
+    get_missing_type = lambda ch: 1 if ch.islower() else 2 if ch.isupper() else 3 if ch.isdigit() else 0
+    while i < str_len:
+        while i + length < str_len and s[i] == s[i + length]: length +=1
+        types[get_missing_type(s[i])] = 0
+        triple = length / 3
+        if triple > 0:
+            if delete >= 1:
+                seq = length % 3
+                if seq == 0 or (delete >= 2 and seq == 1):
+                    triple -= 1
+                    delete -= seq + 1
+            change += triple
+        i , length = length + i , 1
+    missing_type = sum(types[1:])
+    if str_len > 20:
+        change -= delete / 3
         delete = str_len - 20
-        change -= min(delete, one)
-        change -= min(max(delete - one, 0), two ) / 2
-        change -= max(delete - one - two, 0) / 3
-        return delete + max(missing_type, change)     
-
+        return delete + max(missing_type, change)
+    elif str_len >= 6: return max(missing_type, change)
+    return max(missing_type, 6- str_len)
