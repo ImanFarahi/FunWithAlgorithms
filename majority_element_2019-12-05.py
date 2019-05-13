@@ -25,6 +25,21 @@ class Solution(object):
         return v
         
         
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        c = collections.defaultdict(int); v =[]; m= len(nums)/3
+        for num in nums:
+            c[num] += 1
+            if c[num] > m:
+                v.append(num)
+                c[num] = - sys.maxsize -1
+        return v
+    
+  
  class Solution(object):
     def majorityElement(self, nums):
         """
