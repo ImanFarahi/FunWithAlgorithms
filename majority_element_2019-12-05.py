@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution1(object):
     def majorityElement(self, nums):
         """
         :type nums: List[int]
@@ -12,7 +12,8 @@ class Solution(object):
                 c[num] = -sys.maxsize - 1 # -float('inf')
         return v
 
-class Solution(object):
+    
+class Solution2(object):
     def majorityElement(self, nums):
         """
         :type nums: List[int]
@@ -25,7 +26,7 @@ class Solution(object):
         return v
         
         
-class Solution(object):
+class Solution3(object):
     def majorityElement(self, nums):
         """
         :type nums: List[int]
@@ -40,7 +41,7 @@ class Solution(object):
         return v
     
   
- class Solution(object):
+ class Solution4(object):
     def majorityElement(self, nums):
         """
         :type nums: List[int]
@@ -51,6 +52,42 @@ class Solution(object):
             if c <= m: continue
             else: v.append(num)
         return v
+    
       
-
-     
+class Solution5(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        v = []; m = len(nums) / 3; t = [sys.maxsize, sys.maxsize]; c = [0, 0]
+        for num in nums:
+            if t[0] == num:
+                c[0] += 1 
+            elif t[1] == num:
+                c[1] += 1 
+            elif c[0] == 0:
+                c[0] = 1 
+                t[0] = num
+            elif c[1] == 0:
+                c[1] = 1
+                t[1] = num
+            else:
+                c[0] -= 1
+                c[1] -= 1 
+                
+        c = [0, 0]
+        for num in nums:
+            if num == t[0]:
+                c[0] += 1 
+                continue
+            if num == t[1]:
+                c[1] += 1
+                continue
+        
+        
+        v.append(t[0]) if c[0] > m else None
+        v.append(t[1]) if c[1] > m else None
+               
+        return v    
+ 
