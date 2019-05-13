@@ -67,14 +67,12 @@ class Solution5(object):
             elif t[1] == num:
                 c[1] += 1 
             elif c[0] == 0:
-                c[0] = 1 
-                t[0] = num
+                t[0], c[0] = num, 1 
             elif c[1] == 0:
-                c[1] = 1
-                t[1] = num
+                t[1], c[1] = num, 1
             else:
                 c[0] -= 1
-                c[1] -= 1 
+                c[1] -= 1
                 
         c = [0, 0]
         for num in nums:
@@ -85,9 +83,7 @@ class Solution5(object):
                 c[1] += 1
                 continue
         
-        
         v.append(t[0]) if c[0] > m else None
         v.append(t[1]) if c[1] > m else None
                
-        return v    
- 
+        return v
