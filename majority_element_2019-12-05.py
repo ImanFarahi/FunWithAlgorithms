@@ -60,7 +60,7 @@ class Solution5(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        v = []; m = len(nums) / 3; t = [sys.maxsize, sys.maxsize]; c = [0, 0]
+        m = len(nums) / 3; v, t, c = [], [0, 0], [0, 0]
         for num in nums:
             if t[0] == num:
                 c[0] += 1 
