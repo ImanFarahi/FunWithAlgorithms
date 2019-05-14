@@ -78,13 +78,13 @@ class Solution5(object):
         for num in nums:
             if num == t[0]:
                 c[0] += 1 
-                continue
-            if num == t[1]:
+            elif num == t[1]:
                 c[1] += 1
-                continue
-        
-        v.append(t[0]) if c[0] > m else None
-        v.append(t[1]) if c[1] > m else None
+                
+        if c[0] > m:
+            v.append(t[0])
+        if c[1] > m:   
+            v.append(t[1])
                
         return v
 
