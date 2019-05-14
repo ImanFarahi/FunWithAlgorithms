@@ -87,3 +87,18 @@ class Solution5(object):
         v.append(t[1]) if c[1] > m else None
                
         return v
+
+    
+class Solution6(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        v = []; m= len(nums)/3
+        for num, c in collections.Counter(nums).items(): 
+            if c <= m: continue
+            else: 
+                v.append(num)
+                if len(v) == 2: break
+        return v
