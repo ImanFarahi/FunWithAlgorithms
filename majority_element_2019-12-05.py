@@ -95,7 +95,7 @@ class Solution6(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        v = []; m= len(nums)/3
+        v = []; m = len(nums) / 3
         for num, c in collections.Counter(nums).items(): 
             if c <= m: continue
             else: 
